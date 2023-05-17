@@ -11,6 +11,12 @@ dotenv.config();
 connectDB();
 const app = express();
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://realtime-chat-app-t4vb.vercel.app')
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS')
+  next()
+})
 app.use(express.json()); // to accept json data
 
 // app.get("/", (req, res) => {
